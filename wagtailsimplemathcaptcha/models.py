@@ -5,17 +5,26 @@ from simplemathcaptcha.fields import MathCaptchaField
 from wagtail.wagtailadmin.utils import send_mail
 from wagtail.wagtailforms.models import AbstractEmailForm, AbstractForm
 
-from .forms import MathCaptchaFormBuilder
+from .forms import create_form_builder
 
+class CaptchaLabelMixin(object):
+    captcha_label = ''
+    captcha_help_text = ''
 
-class MathCaptchaEmailForm(AbstractEmailForm):
+    def get_captcha_label(self):
+        return self.captcha_label
+    
+    def get_captcha_help_text(self):
+        return self.captcha_help_text
+
+class MathCaptchaEmailForm(AbstractEmailForm, CaptchaLabelMixin):
     """A MathCaptchaForm Page. Pages implementing a captcha form with email notification should inhert from it"""
 
     is_abstract = True  # Don't display me in "Add"
 
     def __init__(self, *args, **kwargs):
         super(MathCaptchaEmailForm, self).__init__(*args, **kwargs)
-        self.form_builder = MathCaptchaFormBuilder
+        self.form_builder = create_form_builder(label=self.get_captcha_label(), help_text=self.get_captcha_help_text())
 
     def process_form_submission(self, form):
         super(AbstractEmailForm, self).process_form_submission(form)
@@ -31,14 +40,14 @@ class MathCaptchaEmailForm(AbstractEmailForm):
         abstract = True
 
 
-class MathCaptchaForm(AbstractForm):
+class MathCaptchaForm(AbstractForm, CaptchaLabelMixin):
     """A SweetCaptchaForm Page. Pages implementing a captcha form should inhert from it"""
 
     is_abstract = True  # Don't display me in "Add"
 
     def __init__(self, *args, **kwargs):
         super(MathCaptchaForm, self).__init__(*args, **kwargs)
-        self.form_builder = MathCaptchaFormBuilder
+        self.form_builder = create_form_builder(label=self.get_captcha_label(), help_text=self.get_captcha_help_text())
 
     class Meta:
         abstract = True
