@@ -11,15 +11,14 @@ The code is based on [wagtailsweetcaptcha](https://github.com/jordij/wagtailswee
 Installation
 ----------
 
-1. Install wagtail-simple-math-captcha
-2. Add wagtail-simple-math-captcha to INSTALLED_APPS.
+1. Install `wagtail-simple-math-captcha`
+2. Add `wagtailsimplemathcaptcha` to `INSTALLED_APPS` in your `settings.py`.
 
 Usage
 ----------
 
-When you install wagtail-simple-math-captcha you won't get a captcha field in the available field types
-in the form builder. To use it you need to subclass either MathCaptchaForm or MathCaptchaEmailForm (replacements for AbstractForm and AbstractEmailForm respectively). After you do that the captcha field
-will appear in your frontend:
+When you install `wagtail-simple-math-captcha` you won't get a captcha field in the available field types
+in the form builder. To use it you need to subclass either `MathCaptchaForm` or `MathCaptchaEmailForm` (replacements for `AbstractForm` and `AbstractEmailForm` respectively). After you do that the captcha field will appear in your frontend:
 
 ```python
 from modelcluster.fields import ParentalKey
@@ -54,8 +53,7 @@ FormPage.content_panels = [
 ]
 ```
 
-You can configure the field verbose_name and help_text properties by including captcha_label and captcha_help_text properties in the class or overriding get_captcha_label() and get_captcha_help_text()
-methods:
+You can configure the field's `verbose_name` and `help_text` properties by including `captcha_label` and `captcha_help_text` properties in the class or overriding `get_captcha_label()` and `get_captcha_help_text()` methods:
 
 ```python
 from modelcluster.fields import ParentalKey
@@ -92,3 +90,5 @@ FormPage.content_panels = [
     ], "Email")
 ]
 ```
+
+The defaults for both `captcha_label` and `captcha_help_text` is emty string.
