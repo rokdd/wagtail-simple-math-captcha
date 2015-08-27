@@ -15,7 +15,7 @@ def create_form_builder(label='', help_text=''):
         def formfields(self):
             # Add mathcaptcha to formfields property
             fields = super(MathCaptchaFormBuilder, self).formfields
-            fields['sweetcaptcha'] = MathCaptchaField(label=label, help_text=help_text)
+            fields['mathcaptcha'] = MathCaptchaField(label=label, help_text=help_text)
     
             return fields
     
