@@ -11,7 +11,7 @@ The code is based on [wagtailsweetcaptcha](https://github.com/jordij/wagtailswee
 Installation
 ----------
 
-1. Install `wagtail-simple-math-captcha`
+1. Install `wagtail-simple-math-captcha`.
 2. Add `wagtailsimplemathcaptcha` to `INSTALLED_APPS` in your `settings.py`.
 
 Usage
