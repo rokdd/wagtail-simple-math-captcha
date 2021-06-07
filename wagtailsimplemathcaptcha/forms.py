@@ -6,7 +6,7 @@ def create_form_builder(label='', help_text=''):
         def __init__(self, fields):
             super(MathCaptchaFormBuilder, self).__init__(fields)
             # Add mathcaptcha to FIELD_TYPES declaration
-            self.FIELD_TYPES.update({'mathcaptcha': self.create_mathcaptcha_field})
+            self.formfields.update({'mathcaptcha': self.create_mathcaptcha_field})
     
         def create_mathcaptcha_field(self, field, options):
             return MathCaptchaField(**options)
