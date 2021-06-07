@@ -2,8 +2,8 @@ from six import text_type
 
 from simplemathcaptcha.fields import MathCaptchaField
 
-from wagtail.wagtailadmin.utils import send_mail
-from wagtail.wagtailforms.models import AbstractEmailForm, AbstractForm
+from wagtail.admin.mail import send_mail
+from wagtail.contrib.forms.models import AbstractEmailForm, AbstractForm
 
 from .forms import create_form_builder
 
