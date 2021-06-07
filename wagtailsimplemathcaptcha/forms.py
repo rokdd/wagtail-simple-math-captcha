@@ -1,4 +1,4 @@
-from wagtail.wagtailforms.forms import FormBuilder
+from wagtail.contrib.forms.forms import FormBuilder
 from simplemathcaptcha.fields import MathCaptchaField
 
 def create_form_builder(label='', help_text=''):
